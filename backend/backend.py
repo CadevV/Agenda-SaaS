@@ -40,5 +40,11 @@ def ver_tarefa():
 def health():
     return jsonify({'status': 'ok'})
 
+@app.route('/tarefas/int:id_tarefa>', methods=['DELETE'])
+def excluir_tarefa(tarefa_id):
+    global tarefas
+    tarefas = [t for t in tarefas if t['id'] != tarefa_id]
+    return jsonify({'mensagem': 'tarefa excluida com sucesso'})
+
 if __name__ == '__main__':
     app.run(debug=True)
