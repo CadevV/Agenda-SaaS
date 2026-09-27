@@ -1,44 +1,34 @@
+from flask import Flask, request, jsonify
+
+app = Flask(__name__)
+
+@app.route('/cadastro', methods=['POST'])
 def cadastro():
-    opçao = 0
-    while True:
-        print('''        [ 1 ] cadastrar
-        [ 2 ] entrar''')
+    dados = request.get_json()
+    nome_conta = dados.get('nome_conta')
+    senha_conta = dados.get('senha_conta')
+    return f'cadastrado: {nome_conta}'
 
-        opcao = int(input('qual é a opção? '))
+tarefas = []
+proximo_id = 1
 
-        if opcao == 1:
-            nome_conta = input('qual é o nome dá conta? ')
-            senha_conta = input('qual é a senha dá conta? ')
-        elif opcao == 2:
-            nome_conta = input('qual é o nome dá conta? ')
-            senha_conta = input('qual é a senha dá conta')
-        else:
-            print('opção inválida')
-        return nome_conta, senha_conta
-
-nome_conta, senha_conta = cadastro()
-
+@app.route('/tarefas', methods=['POST'])
 def menu():
-    opcao = 0
-    while True:
-        print('''    [ 1 ] agendar tarefa
-    [ 2 ] ver tarefas agendada
-    [ 3 ] excluir tarefas
-    [ 4 ] sair''')
-        opcao = int(input('qual é a sua opção? '))
+    global proximo_id
+    dados = request.get_json()
 
-        if opcao == 1:
-            tarefa = str(input(('qual a sua tarefa? ')))
-            data = input('qual é a data que você quer ser lembrado? ')
-            obs = str(input('qual é a observação que você quer deixar? '))
-            return tarefa, data, obs
-        
-        elif opcao == 2:
-            print(tarefa)
-            print(data)
-            print(obs)
-        elif opcao == 3:
-            print('qual tarefa você quer excluir? ')
-        else:
-            print('saindo')
-menu()
+    nova_tarefa = {
+        'id': proximo_id,
+        'tarefas': dados.get('tarefas'),
+        'data': dados.get('data'),
+        'obs': dados.get('obs')
+    }
+
+    tarefas.append(nova_tarefa)
+    proximo_id += 1
+
+    return jsonify(nova_tarefa)
+
+
+if __name__ == '__main__':
+    app.run(debug=True)
