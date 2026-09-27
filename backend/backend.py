@@ -1,6 +1,8 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
 @app.route('/cadastro', methods=['POST'])
 def cadastro():
@@ -24,11 +26,19 @@ def menu():
         'obs': dados.get('obs')
     }
 
+
     tarefas.append(nova_tarefa)
     proximo_id += 1
 
     return jsonify(nova_tarefa)
 
+@app.route('/ver_tarefa', methods=['GET'])
+def ver_tarefa():
+    return f'suas tarefas são {tarefas}'
+
+@app.route('/health', methods=['GET'])
+def health():
+    return jsonify({'status': 'ok'})
 
 if __name__ == '__main__':
     app.run(debug=True)
