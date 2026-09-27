@@ -7,17 +7,27 @@ const btnViewPass = document.querySelector('.viewPass')
 const btnUnViewPass = document.querySelector('.unViewPass')
 
 let tentativas = 0
+let bloqueado = false
+
+function limparFeedback(){
+    setTimeout(()=>{
+        feedbackLogin.textContent = ""
+    }, 1000)
+}
 
 function rateLimit(){
-    if (tentativas > 4) {
+    tentativas++
+
+    if(tentativas >= 5){
+        bloqueado = true
+        feedbackLogin.textContent = "Ultrapassou o limite de tentativas. Aguarde 1 minuto"
+        clearTimeout()
         setTimeout(() => {
             tentativas = 0
-        }, 60000);
-
-        return
+            bloqueado = false
+            feedbackLogin.textContent = ""
+        }, 60000)
     }
-    tentativas++
-    console.log(tentativas)
 }
 
 function login(){
@@ -28,10 +38,19 @@ function login(){
     let emailNameUser = emailLogin.value.trim()
     let senhaUser = senhaLogin.value
 
-    if(emailNameUser == "" || senhaUser == "") return
+    if(emailNameUser == "" || senhaUser == "") {
+        if(emailNameUser == ""){
+            feedbackLogin.textContent = "Preencha seu nome ou e-mail."
+            limparFeedback()
+        } else{
+            feedbackLogin.textContent = "Digite sua senha"
+            limparFeedback()
+        }
+        return
+    }
 
-    if(tentativas > 5) {
-        feedbackLogin.textContent = "Ultrapassou o nivel de tentativas "
+    if(bloqueado === true) {
+        feedbackLogin.textContent = "Ultrapassou limite de tentativas"
         return
     }
 
@@ -41,15 +60,21 @@ function login(){
         feedbackLogin.classList.remove('erro')
         feedbackLogin.textContent = "Senha e usuario Corretos"
 
+        limparFeedback()
+
         setTimeout(() => {
             window.location.href = "dashboard.html"
         }, 1000)
     } else {
         feedbackLogin.classList.remove('certo')
         feedbackLogin.classList.add('erro')
-        feedbackLogin.textContent = "Senha ou usuario Incorreto"
 
         rateLimit()
+
+        if(!bloqueado){
+            feedbackLogin.textContent = "Senha ou usuario Incorreto"
+            limparFeedback()
+        }
     }
 }
 

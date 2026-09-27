@@ -1,6 +1,6 @@
 :root {
     --azulPrincipal: #4F46E5;
-    --azulSegundario: #46b8e5;
+    --azulSecundario: #46b8e5;
     --fundo: #F8FAFC;
     --texto:  #111827;
     --textoSuple: #525252;
@@ -217,6 +217,6 @@ body{
 }
 
 .openCadastro{
-    color: var(--azulSegundario);
+    color: var(--azulSecundario);
     cursor: pointer;
 }
