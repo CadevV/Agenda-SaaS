@@ -1,11 +1,68 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Agenda | Login</title>
+
+    <!--fonts-->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Boogaloo&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/8bf2916310.js" crossorigin="anonymous"></script>
+
+    <!--CSS-->
+
+    <link rel="stylesheet" href="css/style.css">
+    
 </head>
 <body>
-    
+
+    <main class="mainLogin">
+        <section class="infoLogin">
+            <div class="introInfo">
+                <h1>Bem Vindo a <span class="textAgenda on"></span></h1>
+                <h2>Organize seu dia</h2>
+            </div>
+
+            <ul class="topicosInfo">
+                <li><span class="indiceTopico">1</span>Marque e veja seus compromissos</li>
+                <li><span class="indiceTopico">2</span>Organize seu negocio</ç>
+                <li><span class="indiceTopico">3</span>Veja proximos eventos</li>
+            </ul>
+            
+
+        </section>
+
+        <section class="contLogin">
+
+            <form class="formLogin" autocomplete="off" novalidate>
+
+                <h2>Faça login com sua conta</h2>
+
+                <div class="inputsLogin">
+                    <div class="campoLogin">
+                        <input aria-label="Digite o E-Mail" type="email" id="emailLogin" placeholder="Digite o E-Mail ou Nome de Usuario" name="email" required>
+                    </div>
+                    
+                    <div class="campoLogin">
+                        <button type="button" class="viewPass"><i class="fa-regular fa-eye"></i></button>
+                        <input aria-label="Digite a senha" type="password" id="passLogin" placeholder="Digite a senha" name="senha" required>   
+                    </div>
+                    
+                    <button type="submit" id="btnEntrar">Entrar</button>
+
+                    <div class="feedbackLogin"></div>
+                </div>
+
+            </form>
+            
+        </section>
+    </main>
+
+
+    <script src="js/animations.js"></script>
+    <script src="js/login.js"></script>
 </body>
 </html>
