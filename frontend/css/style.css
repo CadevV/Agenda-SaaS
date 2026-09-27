@@ -1,5 +1,6 @@
 :root {
     --azulPrincipal: #4F46E5;
+    --azulSecundario: #46b8e5;
     --fundo: #F8FAFC;
     --texto:  #111827;
     --textoSuple: #525252;
@@ -18,12 +19,14 @@ body{
     background: var(--fundo);
     color: var(--texto);
     font-family: "Space Grotesk", sans-serif;
+    cursor: default;
 }
 
 .mainLogin{
     display: flex;
     justify-content: space-around;
     align-items: center;
+    flex-wrap: wrap;
     height: 100vh;
 }
 
@@ -124,11 +127,11 @@ body{
     align-items: center;
     min-width: 40%;
     min-height: 50%;
+    gap: 50px;
 }
 
 .formLogin h2{
     display: flex;
-    height: 30%;
     align-items: flex-start;
 }
 
@@ -138,7 +141,6 @@ body{
     gap: 15px;
     align-items: center;
     justify-content: center;
-    height: 70%;
 }
 
 .campoLogin{
@@ -162,9 +164,9 @@ body{
     color: var(--texto);
 }
 
-.viewPass{
+.viewPass, .unViewPass{
     color: var(--fundo);
-    display: flex;
+    display: none;
     align-items: center;
     justify-content: center;
     border: none;
@@ -173,8 +175,11 @@ body{
     right: 10px;
     top: 50%;
     transform: translateY(-50%);
-    background: none;
     cursor: pointer;
+}
+
+.viewPass.on, .unViewPass.on{
+    display: flex;
 }
 
 .campoLogin input::placeholder{
@@ -189,20 +194,14 @@ body{
     border: none;
     padding: 10px;
     cursor: pointer;
+    transition: .5s ease-in-out;
+    box-shadow: 2px 1px 0px 2px rgba(0, 0, 0, 0.7);
 }
 
 #btnEntrar:hover{
-    animation: raios .5s ease-in-out;
-}
-
-@keyframes raios {
-    0%{
-        background-image: linear-gradient(45deg, var(--fundo), var(--fundo), var(--sucesso));
-    } 50% {
-        background-image: linear-gradient(45deg, var(--fundo), var(--sucesso));
-    } 100% {
-        background-image: linear-gradient(45deg, var(--sucesso), var(--sucesso), var(--fundo));
-    }
+    color: var(--sucesso);
+    transform: translateY(2px);
+    box-shadow: none;
 }
 
 .feedbackLogin.erro{
@@ -211,4 +210,13 @@ body{
 
 .feedbackLogin.certo{
     color: var(--sucesso);
+}
+
+.textCadastro{
+    font-size: 0.8rem;
+}
+
+.openCadastro{
+    color: var(--azulSecundario);
+    cursor: pointer;
 }

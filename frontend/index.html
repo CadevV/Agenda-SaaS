@@ -43,25 +43,28 @@
 
                 <div class="inputsLogin">
                     <div class="campoLogin">
-                        <input aria-label="Digite o E-Mail" type="email" id="emailLogin" placeholder="Digite o E-Mail ou Nome de Usuario" name="email" required>
+                        <input aria-label="Digite o E-Mail" type="text" id="emailLogin" placeholder="Digite o E-Mail ou Nome de Usuario" name="email" required>
                     </div>
                     
                     <div class="campoLogin">
-                        <button type="button" class="viewPass"><i class="fa-regular fa-eye"></i></button>
-                        <input aria-label="Digite a senha" type="password" id="passLogin" placeholder="Digite a senha" name="senha" required>   
+                        <button type="button" class="unViewPass on" aria-label="Mostrar senha"><i class="fa-regular fa-eye"></i></button>
+                        <button type="button" class="viewPass"><i class="fa-regular fa-eye-slash" aria-label="Ocultar senha"></i></button>
+                        <input aria-label="Digite a senha" type="password" id="passLogin" placeholder="Digite a senha (3-20 digitos)" name="senha" minlength="3" maxlength="20" required>   
                     </div>
                     
                     <button type="submit" id="btnEntrar">Entrar</button>
 
-                    <div class="feedbackLogin"></div>
+                    <div class="feedbackLogin" aria-live="polite"></div>
                 </div>
+
+                <p class="textCadastro">Não tem conta? faça seu cadastro <a href="cadastro.html" class="openCadastro">Aqui</a></p>
 
             </form>
             
         </section>
     </main>
 
-
+    <script src="js/api.js"></script>
     <script src="js/animations.js"></script>
     <script src="js/login.js"></script>
 </body>
