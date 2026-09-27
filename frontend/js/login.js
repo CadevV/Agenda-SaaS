@@ -13,7 +13,7 @@ function login(){
     let emailNameUser = emailLogin.value
     let senhaUser = senhaLogin.value
 
-    if(emailNameUser == tempAdmName || emailNameUser == tempAdmEmail & senhaUser == tempAdmPass){
+    if(emailNameUser == tempAdmName || emailNameUser == tempAdmEmail && senhaUser == tempAdmPass){
         feedbackLogin.classList.add('certo')
         feedbackLogin.classList.remove('erro')
         feedbackLogin.textContent = "Senha e usuario Corretos"
@@ -28,8 +28,9 @@ function login(){
     }
 }
 
+let tentativas = 0
+
 function rateLimit(){
-    let tentativas = 0
     
     if (tentativas < 5) {
         setInterval(() => {
