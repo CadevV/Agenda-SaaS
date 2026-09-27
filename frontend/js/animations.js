@@ -14,8 +14,4 @@ function digitar(){
     }
 }
 
-function login(){
-    
-}
-
 window.addEventListener("load", digitar)
