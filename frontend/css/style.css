@@ -1,0 +1,222 @@
+:root {
+    --azulPrincipal: #4F46E5;
+    --azulSecundario: #46b8e5;
+    --fundo: #F8FAFC;
+    --texto:  #111827;
+    --textoSuple: #525252;
+    --sucesso:  #16A34A;
+    --erro:  #DC2626;
+    --bordas: #D0D5DD;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background: var(--fundo);
+    color: var(--texto);
+    font-family: "Space Grotesk", sans-serif;
+    cursor: default;
+}
+
+.mainLogin{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    height: 100vh;
+}
+
+.infoLogin{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: var(--fundo);
+    gap: 15px;
+    height: 100%;
+    width: 40%;
+    font-size: 1.5rem;
+}
+
+.introInfo{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    width: 90%;
+    height: 30%;
+    gap: 10px;
+}
+
+.introInfo h1{
+    width: 10ch;
+}
+
+.textAgenda {
+    color: var(--azulPrincipal);
+}
+
+.textAgenda.on{
+    animation: pisca-barra .4s infinite ease-in-out;
+}
+
+@keyframes pisca-barra{
+    0%{
+        border-right: 1px solid var(--texto);
+    } 100% {
+        border: none;
+    }
+}
+
+.introInfo h2{
+    font-size: 1.1rem;
+    color: var(--textoSuple);
+}
+
+.topicosInfo{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 10px;
+    font-size: 1.1rem;
+    height: 70%;
+    width: 90%;
+}
+
+.topicosInfo li{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.indiceTopico{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--azulPrincipal);
+    background: var(--texto);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+}
+
+.contLogin{
+    background-image: linear-gradient(45deg, var(--azulPrincipal), var(--texto));
+    height: 100%;
+    width: 60%;
+    border-radius: 30px 0px 0px 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.formLogin{
+    background: rgba(168, 232, 236, 0.1);
+    color: var(--bordas);
+    backdrop-filter: blur(10px);
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 16px;
+    align-items: center;
+    min-width: 40%;
+    min-height: 50%;
+    gap: 50px;
+}
+
+.formLogin h2{
+    display: flex;
+    align-items: flex-start;
+}
+
+.inputsLogin{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+    justify-content: center;
+}
+
+.campoLogin{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.campoLogin input{
+    width: 32ch;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    background: rgba(227, 243, 250, 0.4);
+    color: var(--texto);
+}
+
+.viewPass, .unViewPass{
+    color: var(--fundo);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background: none;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+.viewPass.on, .unViewPass.on{
+    display: flex;
+}
+
+.campoLogin input::placeholder{
+    color: var(--texto);
+    opacity: 0.5;
+}
+
+#btnEntrar{
+    border-radius: 5px;
+    background: var(--fundo);
+    color: var(--texto);
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    transition: .5s ease-in-out;
+    box-shadow: 2px 1px 0px 2px rgba(0, 0, 0, 0.7);
+}
+
+#btnEntrar:hover{
+    color: var(--sucesso);
+    transform: translateY(2px);
+    box-shadow: none;
+}
+
+.feedbackLogin.erro{
+    color: var(--erro);
+}
+
+.feedbackLogin.certo{
+    color: var(--sucesso);
+}
+
+.textCadastro{
+    font-size: 0.8rem;
+}
+
+.openCadastro{
+    color: var(--azulSecundario);
+    cursor: pointer;
+}
