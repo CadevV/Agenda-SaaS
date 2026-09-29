@@ -47,11 +47,8 @@ def menu():
 
     return jsonify({'mensagem': 'tarefas criada com sucesso', 'id': nova_tarefa.id})
 
-<<<<<<< HEAD
     return jsonify(nova_tarefa)
 
-=======
->>>>>>> origin/main
 @app.route('/ver_tarefa', methods=['GET'])
 def ver_tarefa():
     todas_taferefas = Tarefas.query.all()
