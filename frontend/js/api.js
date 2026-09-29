@@ -5,4 +5,15 @@ async function testarBackend(){
     console.log(dados)
 }
 
+async function cadastrarUsuario(nome, senha) {
+    fetch('http://127.0.0.1:5000/cadastro', {
+        method: "post",
+
+        body: JSON.stringify({
+            nome_conta: nome,
+            senha_conta: senha
+        })
+    })
+}
+
 testarBackend()
