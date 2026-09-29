@@ -22,6 +22,8 @@ body{
     cursor: default;
 }
 
+/* Inicio Login*/
+
 .mainLogin{
     display: flex;
     justify-content: space-around;
@@ -220,3 +222,7 @@ body{
     color: var(--azulSecundario);
     cursor: pointer;
 }
+
+/* Final Login*/
+
+/* Inicio Cadastro*/
