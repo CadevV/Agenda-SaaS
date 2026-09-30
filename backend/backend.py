@@ -32,6 +32,25 @@ def cadastro():
     db.session.commit()
     return  jsonify({'mensagem': 'conta criada com sucesso', 'nome_conta': nome_conta})
 
+@app.route('/login', methods=['POST'])
+def login ():
+    dados = request.get_json()
+
+    nome_conta = dados.get('nome_conta')
+    senha_conta = dados.get('senha_conta')
+
+    usuario_encontrado = usuario.query.filter_by(
+        nome_conta=nome_conta
+    ).first()
+
+    if not usuario_encontrado:
+        return jsonify({'erro': 'usuario não encontrado'}), 404
+    
+    if not usuario_encontrado.senha_conta != senha_conta:
+        return jsonify({'erro': 'senha não encontrada'}), 401
+
+    return jsonify({'login realizdo' 'id': usuario_encontrado.id, 'nome_conta': usuario_encontrado.nome_conta} )
+
 @app.route('/tarefas', methods=['POST'])
 def menu():
     dados = request.get_json()
