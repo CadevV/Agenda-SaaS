@@ -21,5 +21,3 @@ async function cadastrarUsuario(nome, senha) {
     console.log(resposta)
 }
 testarBackend()
-
-cadastrarUsuario("caue_teste", "senha_teste_123")

@@ -5,11 +5,11 @@ let i = 0
 function digitarLogin(){
     let palavra = "agenda"
 
-    if(palavra.length > i){
+    if(textAgenda && palavra.length > i){
         textAgenda.textContent += palavra[i]
         i++
         setTimeout(digitarLogin, 250);
-    } else {
+    } else if(textAgenda){
         textAgenda.classList.remove('on')
     }
 }
@@ -18,7 +18,7 @@ let index = 0
 function bemVindoUser(){
     let palavra = "gui"
 
-    if(palavra.length > index){
+    if(nameUser && palavra.length > index){
         nameUser.textContent += palavra[index]
         index++
         setTimeout(bemVindoUser, 250)
