@@ -1,15 +1,91 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Agenda | Saas</title>
-</head>
-<body>
-    
-    
+    <link rel="stylesheet" href="css/style.css" />
+    <!--fonts-->
 
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Boogaloo&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Space+Grotesk:wght@300..700&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/8bf2916310.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <main class="mainDash">
+      <section class="infoDash">
+        <h1 class="titleDash">AGENDA <span>MAX</span></h1>
 
+        <nav class="navDash">
+            <ul>
+                <li><a href="#" class="select">Home</a></li>
+                <li><a href="#">Calendario</a></li>
+                <li><a href="#">Proximos Eventos</a></li>
+            </ul>
+        </nav>
+
+        <div class="btnsContaDash">
+          <button class="btnConta">
+            <i class="fa-solid fa-user"></i>
+          </button>
+
+          <button class="btnConfig">
+            <i class="fa-solid fa-gear"></i>
+          </button>
+
+          <button class="btnLogout">
+            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+          </button>
+        </div>
+      </section>
+
+      <section class="contDash">
+        <div class="boxContDash">
+            <h3 class="titleBoxDash">Dia de hoje</h3>
+            <div class="contBoxDash">
+                <h2>15/07</h2>
+            </div>
+        </div>
+
+        <div class="boxContDash">
+            <h3 class="titleBoxDash">Eventos Totais</h3>
+            <div class="contBoxDash">
+                <h2>67</h2>
+            </div>
+        </div>
+
+        <div class="boxContDash">
+            <h3 class="titleBoxDash">Eventos para hoje</h3>
+            <div class="contBoxDash">
+                <h2>42</h2>
+            </div>
+        </div>
+
+        <div class="boxContDash">
+            <h3 class="titleBoxDash">Eventos concluidos</h3>
+            <div class="contBoxDash">
+                <h2>20</h2>
+            </div>
+        </div>
+
+        <div class="bigBoxContDash">
+            <h2>eventos para o mês</h2>
+        </div>
+
+        <div class="colunaBoxContDash">
+            <h2>Bem vindo! <span class="nameUser"></span></h2>
+        </div>
+      </section>
+    </main>
+
+    <script src="js/animations.js"></script>
     <script src="js/api.js"></script>
-</body>
+  </body>
 </html>

@@ -78,7 +78,7 @@ function login(){
     }
 }
 
-export function showPass(){
+function showPass(){
     if(senhaLogin.type === "text"){
         senhaLogin.type = "password"
 

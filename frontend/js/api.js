@@ -6,14 +6,20 @@ async function testarBackend(){
 }
 
 async function cadastrarUsuario(nome, senha) {
-    fetch('http://127.0.0.1:5000/cadastro', {
+    const resposta = await fetch('http://127.0.0.1:5000/cadastro', {
         method: "post",
+
+        headers: {
+            "Content-Type": "application/json"
+        },
 
         body: JSON.stringify({
             nome_conta: nome,
             senha_conta: senha
         })
     })
+    console.log(resposta)
 }
-
 testarBackend()
+
+cadastrarUsuario("caue_teste", "senha_teste_123")
