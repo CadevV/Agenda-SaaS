@@ -65,6 +65,7 @@ function login(){
         setTimeout(() => {
             window.location.href = "dashboard.html"
         }, 1000)
+
     } else {
         feedbackLogin.classList.remove('certo')
         feedbackLogin.classList.add('erro')
