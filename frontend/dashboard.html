@@ -1,15 +1,129 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Agenda | Saas</title>
-</head>
-<body>
-    
-    
+    <link rel="stylesheet" href="css/style.css" />
+    <!--fonts-->
 
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Boogaloo&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Space+Grotesk:wght@300..700&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/8bf2916310.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <main class="mainDash">
+      <section class="infoDash">
+        <h1 class="titleDash">AGENDA <span>MAX</span></h1>
 
+        <nav class="navDash">
+            <ul>
+                <li><a href="#" class="select">Home</a></li>
+                <li><a href="#">Calendario</a></li>
+                <li><a href="#">Proximos Eventos</a></li>
+            </ul>
+        </nav>
+
+        <div class="btnsContaDash">
+          <button class="btnConta" aria-label="botâo de conta">
+            <i class="fa-solid fa-user"></i>
+          </button>
+
+          <button class="btnConfig" aria-label="botâo de configurações">
+            <i class="fa-solid fa-gear"></i>
+          </button>
+
+          <button class="btnLogout" aria-label="botâo de logout">
+            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+          </button>
+        </div>
+      </section>
+
+      <section class="contDash">
+        <div class="boxContDash">
+            <h3 class="titleBoxDash">Dia de hoje</h3>
+            <div class="contBoxDash">
+                <h2 id="boxDiaHoje"></h2>
+            </div>
+        </div>
+
+        <div class="boxContDash">
+            <h3 class="titleBoxDash">Tarefas Totais</h3>
+            <div class="contBoxDash">
+                <h2 id="boxTarefasTotais"></h2>
+            </div>
+        </div>
+
+        <div class="boxContDash">
+            <h3 class="titleBoxDash">Tarefas para hoje</h3>
+            <div class="contBoxDash">
+                <h2 id="boxTarefasHojeTotais"></h2>
+            </div>
+        </div>
+
+        <div class="boxContDash">
+            <h3 class="titleBoxDash">Tarefas concluidos</h3>
+            <div class="contBoxDash">
+                <h2 id="boxTarefasConcluidas"></h2>
+            </div>
+        </div>
+
+        <div class="bigBoxContDash">
+            <h2>Tarefas para o mês</h2>
+        </div>
+
+        <div class="colunaBoxContDash">
+            
+            <div class="listaTarefasHoje">
+              <h2>Bem vindo! <span class="nameUser"></span></h2>
+              <h4>tarefas para hoje</h4>
+
+              <ul id="tarefasHoje">
+                
+              </ul>
+            </div>
+            
+            <button class="btnNewTask">Nova Tarefa +</button>
+            
+            <div class="modalNewTask">
+              <div class="contModalNewTask">
+                <button class="btnCloseModal"><i class="fa-solid fa-xmark"></i></button>
+                <form id="formNewTask">
+                  <h3>Criar Tarefa</h3>
+                  <p>Crie sua tarefa para se organizar</p>
+                  <div class="boxCamposInputs">
+                    <div class="campoInputNewTask">
+                      <label for="dateTask">Insira a Data Final</label>
+                      <input type="date" name="dateTask" id="dateTask" aria-label="Insira a data" placeholder="ex:25/07">
+                    
+                      <label for="nameTask">Nome</label>
+                      <input type="text" name="nameTask" id="nameTask" aria-label="Insira nome da tarefa" placeholder="Insira nome da tarefa" maxlength="10">
+                    </div>
+                    
+                    <div class="campoInputNewTask">
+                      <label for="obsTask">Descrição</label>
+                      <textarea type="text" name="obsTask" id="obsTask" aria-label="Escreva a Descrição da sua tarefa (maximo:200)" placeholder="Escreva a Descrição da sua tarefa (maximo:200)" maxlength="200"></textarea>
+                    </div>
+                  </div>
+
+                  
+                  <button type="submit" class="btnModalCreateNewTask">Criar Tarefa</button>
+                </form>
+              </div>
+            </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="js/animations.js"></script>
     <script src="js/api.js"></script>
-</body>
+    <script src="js/dashboard.js"></script>
+  </body>
 </html>

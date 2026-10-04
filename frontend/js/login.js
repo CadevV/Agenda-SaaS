@@ -33,7 +33,7 @@ function rateLimit(){
 function login(){
     let tempAdmEmail = "adm123@gmail.com"
     let tempAdmName = "adm123"
-    let tempAdmPass = "adm67"
+    let tempAdmPass = "adm42"
     
     let emailNameUser = emailLogin.value.trim()
     let senhaUser = senhaLogin.value
@@ -65,6 +65,7 @@ function login(){
         setTimeout(() => {
             window.location.href = "dashboard.html"
         }, 1000)
+
     } else {
         feedbackLogin.classList.remove('certo')
         feedbackLogin.classList.add('erro')
@@ -78,7 +79,7 @@ function login(){
     }
 }
 
-export function showPass(){
+function showPass(){
     if(senhaLogin.type === "text"){
         senhaLogin.type = "password"
 

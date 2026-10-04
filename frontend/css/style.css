@@ -22,6 +22,10 @@ body{
     cursor: default;
 }
 
+body::-webkit-scrollbar{
+    display: none;
+}
+
 /* Inicio Login*/
 
 .mainLogin{
@@ -225,4 +229,376 @@ body{
 
 /* Final Login*/
 
-/* Inicio Cadastro*/
+/* DashBoard */
+
+.mainDash{
+    display: flex;
+    background: var(--bordas);
+    width: 100%;
+}
+
+.infoDash{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 23%;
+    height: 100vh;
+    background: var(--texto);
+}
+
+.titleDash{
+    font-size: 2rem;
+    color: var(--fundo);
+}
+
+.titleDash span{
+    color: var(--azulSecundario);
+}
+
+.navDash{
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.navDash ul{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 70%;
+    gap: 20px;
+    font-size: 1.5rem;
+}
+
+.navDash ul a {
+    position: relative;
+    text-decoration: none;
+    color: var(--fundo);
+}
+
+.navDash ul a::after{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-bottom: 2px solid var(--fundo);
+    pointer-events: none;
+    opacity: 0;
+    transition: transform .5s ease-in-out;
+    transform: translateY(10px);
+}
+
+.navDash ul a:hover::after{
+    opacity: 1;
+    transform: translateY(0px);
+}
+
+.navDash ul a.select{
+    text-decoration: underline;
+    text-underline-offset: 8px; 
+}
+
+.navDash ul a.select:hover{
+    text-decoration: none;
+}
+
+.btnsContaDash{
+    display: flex;
+    height: 30%;
+    align-items: flex-end;
+    justify-content: space-around;
+    margin-bottom: 24px;
+    width: 100%;
+}
+
+.btnConta, .btnConfig, .btnLogout{
+    position: relative;
+    min-width: 50px;
+    min-height: 50px;
+    background: none;
+    border: none;
+    color: var(--fundo);
+    font-size: 1.3rem;
+    cursor: pointer;
+    transition: all .4s ease-in-out;
+}
+
+.btnConta::after, .btnConfig::after, .btnLogout::after{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 50%;
+    border-right: 1px solid var(--azulSecundario);
+    opacity: 0;
+    transition: transform .5s ease-in-out;
+}
+
+.btnLogout::after{
+    border-color: 1px solid var(--erro);
+}
+
+.btnConta:hover::after, .btnConfig:hover::after, .btnLogout:hover::after{
+    opacity: 1;
+    transform: rotate(360deg);
+}
+
+.btnConta:hover{
+    transform: translateY(-10px);
+}
+
+.btnConfig:hover{
+    transform: translateY(-10px);
+}
+
+.btnLogout:hover{
+    transform: translateY(-10px);
+    color: var(--erro);
+}
+
+.contDash{
+    width: 100%;
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    padding: 20px;
+    place-content: center;
+}
+
+.boxContDash{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: var(--fundo);
+    width: 100%;
+    height: 140px;
+    font-size: 1.5rem;
+    border-radius: 10px;
+}
+
+.titleBoxDash{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    font-size: 1rem;
+    color: var(--textoSuple);
+}
+
+.contBoxDash{
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+
+.bigBoxContDash{
+    grid-column: span 3;
+    padding: 15px;
+    border-radius: 15px;
+    background: var(--fundo);
+    min-height: 50vh;
+}
+
+.colunaBoxContDash{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: flex-start;
+    justify-content: space-between;
+    background: var(--fundo);
+    border-radius: 15px;
+    min-height: 50vh;
+    padding: 15px;
+}
+
+.colunaBoxContDash h2{
+    flex: 0;
+    color: var(--texto);
+}
+
+.nameUser{
+    color: var(--textoSuple);
+}
+
+.listaTarefasHoje{
+    height: 100%;
+    display: flex;
+    gap: 15px;
+    flex-direction: column;
+    flex: 1;
+}
+
+#tarefasHoje{
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: center;
+    height: 18vh;
+    overflow-y: scroll;
+    gap: 15px;
+}
+
+#tarefasHoje::-webkit-scrollbar{
+    display: none;
+}
+
+#tarefasHoje:has(.semTarefas){
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    list-style: none;
+}
+
+.tasks{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.btnsTask{
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+}
+
+.linhaTask{
+    display: block;
+    width: 100%;
+    height: 3px;
+    background: var(--textoSuple);
+    padding: 1px;
+}
+
+.semTarefas{
+    display: none;
+}
+
+.semTarefas.on{
+    font-size: .9rem;
+    display: block;
+}
+
+.btnNewTask{
+    border-radius: 10px;
+    background: var(--bordas);
+    border: 1px solid var(--texto);
+    padding: 5px;
+    box-shadow: 1px 0px 0px 0px rgba(0, 0, 0, 1);
+    transition: all .5s ease-in-out;
+    cursor: pointer;
+}
+
+.btnNewTask:hover{
+    box-shadow: none;
+    transform: translateY(2px);
+}
+
+.btnNewTask:active{
+    transform: translateY(-1px);
+}
+
+.modalNewTask{
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    backdrop-filter: blur(10px);
+    width: 100%;
+    height: 100vh;
+    z-index: 9999; 
+}
+
+.modalNewTask.on{
+    display: block;
+    animation: subirModal .5s ease-in-out;
+}
+
+@keyframes subirModal {
+    0% {
+        transform: translate(-50%, 100%);
+    } 100% {
+        transform: translate(-50%, -50%);
+    }
+}
+
+.contModalNewTask{
+    width: 50%;
+    height: 60%;
+    padding: 15px;
+    border-radius: 10px;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--texto);
+}
+
+.btnCloseModal{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 1.5rem;
+    background: none;
+    color: var(--fundo);
+    border: none;
+}
+
+#formNewTask{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    align-items: flex-start;
+    justify-content: center;
+    color: var(--fundo);
+    font-size: .8rem;
+}
+
+#formNewTask h3{
+    font-size: 1.5rem;
+}
+
+#formNewTask p{
+    color: var(--bordas);
+}
+
+.boxCamposInputs{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 50%;
+    gap: 30px;
+}   
+
+.campoInputNewTask{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 500px;
+    height: 25%;
+}
+
+#nameTask{
+    width: 300px;
+    border-radius: 5px;
+    padding: 10px;
+    border: none;
+}
+
+.campoInputNewTask textarea{
+    resize: none;
+    width: 100%;
+    height: 100%;
+}
+
+.btnModalCreateNewTask{
+    display: flex;
+    align-items: center;
+    padding: 10px;
+}
