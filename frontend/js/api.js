@@ -38,8 +38,25 @@ async function criarTarefaApi(nome, data, obs) {
 
     const dados = await resposta.json()
 
-    console.log(dados)
-
     return dados
 } 
+
+async function buscarTarefasApi() {
+    const resposta = await fetch("http://127.0.0.1:5000/ver_tarefa") 
+
+    const dados = await resposta.json()
+
+    return dados
+}
+
+async function excluirTarefaApi(id){
+    const resposta = await fetch(`http://127.0.0.1:5000/tarefas/${id}`, {
+        method: "DELETE"
+    })
+
+    const dados = await resposta.json()
+
+    return dados
+}
+
 testarBackend()
