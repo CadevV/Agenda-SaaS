@@ -1,17 +1,29 @@
 const textAgenda = document.querySelector('.textAgenda')
+const nameUser = document.querySelector('.nameUser')
 
 let i = 0
-
-function digitar(){
+function digitarLogin(){
     let palavra = "agenda"
 
-    if(palavra.length > i){
+    if(textAgenda && palavra.length > i){
         textAgenda.textContent += palavra[i]
         i++
-        setTimeout(digitar, 250);
-    } else {
+        setTimeout(digitarLogin, 250);
+    } else if(textAgenda){
         textAgenda.classList.remove('on')
     }
 }
 
-window.addEventListener("load", digitar)
+let index = 0
+function bemVindoUser(){
+    let palavra = "adm"
+
+    if(nameUser && palavra.length > index){
+        nameUser.textContent += palavra[index]
+        index++
+        setTimeout(bemVindoUser, 250)
+    }
+}
+
+digitarLogin()
+bemVindoUser()
