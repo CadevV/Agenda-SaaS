@@ -12,9 +12,9 @@ const dateTask = document.getElementById('dateTask')
 const nameTask = document.getElementById('nameTask')
 const obsTask = document.getElementById('obsTask')
 const tasks = document.querySelectorAll('.tasks')
-const btnCreateNewTask = document.querySelector('.btnModalCreateNewTask')
 
 const tarefas = []
+const tarefasHoje = []
 const tarefasConcluidas = []
 
 function desLogar(){
@@ -35,7 +35,9 @@ function pegarTarefasHoje(){
     tarefas.forEach(element => {
         const dataDaTarefa = new Date(element.data + "T00:00:00")
 
-        if (dataDaTarefa.getTime() === hoje.getTime()) {
+        element.hoje = dataDaTarefa.getTime() === hoje.getTime()
+
+        if (element.hoje) {
             contador++
         }
     });
@@ -58,32 +60,38 @@ function verificarTarefas(){
     if(!tarefasHojeLista.querySelector('li')){
         msgNull.textContent = "Você não tem nenhuma Tarefa"
 
-        tarefasHojeLista.appendChild(msgNull)
+        msgNull.classList.add("semTarefas", "on")
 
-        msgNull.classList.add("semTarefas")
-        msgNull.classList.add('on')
-    } else {
-        msgNull.classList.remove('on')
+        tarefasHojeLista.appendChild(msgNull)
     }
 }
 
-function concluirTask(event){
+function concluirTask(){
     tarefasConcluidas.push(...tarefas.filter(el => el.concluido === true))
 
     boxTasksCompleted.textContent = tarefasConcluidas.length.toString().padStart(2, "0")
 }
 
-function criarTarefa(){
+async function criarTarefa(){
     let dataTaskDigitada = dateTask.value 
     let nomeTaskDigitada = nameTask.value
     let obsTaskDigitada = obsTask.value
 
     if(dataTaskDigitada != "" && nomeTaskDigitada != ""){
+        const tarefaSalva = await criarTarefaApi(
+            nomeTaskDigitada,
+            dataTaskDigitada,
+            obsTaskDigitada
+        )
+        
+        console.log(tarefaSalva)
+        
         const objNewTask = 
         {
-            data: dataTaskDigitada
-            ,nome: nomeTaskDigitada
-            ,desc: obsTaskDigitada
+            id: tarefaSalva.id
+            ,data: tarefaSalva.data
+            ,nome: tarefaSalva.tarefas
+            ,desc: tarefaSalva.obs
             ,hoje: false
             ,concluido: false
         }
@@ -93,13 +101,18 @@ function criarTarefa(){
         pegarTotalTarefas()
         pegarTarefasHoje()
         concluirTask()
+
+        formCreateTask.reset()
         modalCreateNewTask.classList.remove('on')
     }
 
     if(tarefas.length > 0){
         tarefasHojeLista.innerHTML = ``
 
-        tarefas.forEach(element =>{   
+        tarefasHoje.length = 0
+        tarefasHoje.push(...tarefas.filter(el => el.hoje === true))
+
+        tarefasHoje.forEach(element =>{   
             const newTask = document.createElement('li')
             newTask.classList.add('tasks')
 
@@ -115,13 +128,10 @@ function criarTarefa(){
             <span class="linhaTask"></span>
             `
             tarefasHojeLista.appendChild(newTask)
-
-            verificarTarefas()
         })
+        verificarTarefas()
     }
 }
-
-tarefasHojeLista.addEventListener('click', concluirTask)
 
 btnLogout.addEventListener('click', desLogar)
 
@@ -133,7 +143,7 @@ btnCloseModal.addEventListener('click', ()=>{
     modalCreateNewTask.classList.remove('on')
 })
 
-btnCreateNewTask.addEventListener('click', (event)=>{
+formCreateTask.addEventListener('submit', (event)=>{
     event.preventDefault()
     criarTarefa()
 })

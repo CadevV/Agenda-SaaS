@@ -16,7 +16,7 @@ function digitarLogin(){
 
 let index = 0
 function bemVindoUser(){
-    let palavra = "gui"
+    let palavra = "adm"
 
     if(nameUser && palavra.length > index){
         nameUser.textContent += palavra[index]

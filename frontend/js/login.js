@@ -33,7 +33,7 @@ function rateLimit(){
 function login(){
     let tempAdmEmail = "adm123@gmail.com"
     let tempAdmName = "adm123"
-    let tempAdmPass = "adm67"
+    let tempAdmPass = "adm42"
     
     let emailNameUser = emailLogin.value.trim()
     let senhaUser = senhaLogin.value
