@@ -25,5 +25,5 @@ function bemVindoUser(){
     }
 }
 
-window.addEventListener("load", digitarLogin)
-window.addEventListener("load", bemVindoUser)
+digitarLogin()
+bemVindoUser()

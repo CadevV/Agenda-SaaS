@@ -405,6 +405,11 @@ body::-webkit-scrollbar{
 }
 
 .colunaBoxContDash{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: flex-start;
+    justify-content: space-between;
     background: var(--fundo);
     border-radius: 15px;
     min-height: 50vh;
@@ -412,9 +417,188 @@ body::-webkit-scrollbar{
 }
 
 .colunaBoxContDash h2{
+    flex: 0;
     color: var(--texto);
 }
 
-.colunaBoxContDash h2 span{
+.nameUser{
     color: var(--textoSuple);
+}
+
+.listaTarefasHoje{
+    height: 100%;
+    display: flex;
+    gap: 15px;
+    flex-direction: column;
+    flex: 1;
+}
+
+#tarefasHoje{
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: center;
+    height: 18vh;
+    overflow-y: scroll;
+    gap: 15px;
+}
+
+#tarefasHoje::-webkit-scrollbar{
+    display: none;
+}
+
+#tarefasHoje:has(.semTarefas){
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    list-style: none;
+}
+
+.tasks{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.btnsTask{
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+}
+
+.linhaTask{
+    display: block;
+    width: 100%;
+    height: 3px;
+    background: var(--textoSuple);
+    padding: 1px;
+}
+
+.semTarefas{
+    display: none;
+}
+
+.semTarefas.on{
+    font-size: .9rem;
+    display: block;
+}
+
+.btnNewTask{
+    border-radius: 10px;
+    background: var(--bordas);
+    border: 1px solid var(--texto);
+    padding: 5px;
+    box-shadow: 1px 0px 0px 0px rgba(0, 0, 0, 1);
+    transition: all .5s ease-in-out;
+    cursor: pointer;
+}
+
+.btnNewTask:hover{
+    box-shadow: none;
+    transform: translateY(2px);
+}
+
+.btnNewTask:active{
+    transform: translateY(-1px);
+}
+
+.modalNewTask{
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    backdrop-filter: blur(10px);
+    width: 100%;
+    height: 100vh;
+    z-index: 9999; 
+}
+
+.modalNewTask.on{
+    display: block;
+    animation: subirModal .5s ease-in-out;
+}
+
+@keyframes subirModal {
+    0% {
+        transform: translate(-50%, 100%);
+    } 100% {
+        transform: translate(-50%, -50%);
+    }
+}
+
+.contModalNewTask{
+    width: 50%;
+    height: 60%;
+    padding: 15px;
+    border-radius: 10px;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--texto);
+}
+
+.btnCloseModal{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 1.5rem;
+    background: none;
+    color: var(--fundo);
+    border: none;
+}
+
+#formNewTask{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    align-items: flex-start;
+    justify-content: center;
+    color: var(--fundo);
+    font-size: .8rem;
+}
+
+#formNewTask h3{
+    font-size: 1.5rem;
+}
+
+#formNewTask p{
+    color: var(--bordas);
+}
+
+.boxCamposInputs{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 50%;
+    gap: 30px;
+}   
+
+.campoInputNewTask{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 500px;
+    height: 25%;
+}
+
+#nameTask{
+    width: 300px;
+    border-radius: 5px;
+    padding: 10px;
+    border: none;
+}
+
+.campoInputNewTask textarea{
+    resize: none;
+    width: 100%;
+    height: 100%;
+}
+
+.btnModalCreateNewTask{
+    display: flex;
+    align-items: center;
+    padding: 10px;
 }

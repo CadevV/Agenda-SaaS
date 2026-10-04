@@ -50,37 +50,74 @@
         <div class="boxContDash">
             <h3 class="titleBoxDash">Dia de hoje</h3>
             <div class="contBoxDash">
-                <h2>15/07</h2>
+                <h2 id="boxDiaHoje"></h2>
             </div>
         </div>
 
         <div class="boxContDash">
-            <h3 class="titleBoxDash">Eventos Totais</h3>
+            <h3 class="titleBoxDash">Tarefas Totais</h3>
             <div class="contBoxDash">
-                <h2>67</h2>
+                <h2 id="boxTarefasTotais"></h2>
             </div>
         </div>
 
         <div class="boxContDash">
-            <h3 class="titleBoxDash">Eventos para hoje</h3>
+            <h3 class="titleBoxDash">Tarefas para hoje</h3>
             <div class="contBoxDash">
-                <h2>42</h2>
+                <h2 id="boxTarefasHojeTotais"></h2>
             </div>
         </div>
 
         <div class="boxContDash">
-            <h3 class="titleBoxDash">Eventos concluidos</h3>
+            <h3 class="titleBoxDash">Tarefas concluidos</h3>
             <div class="contBoxDash">
-                <h2>20</h2>
+                <h2 id="boxTarefasConcluidas"></h2>
             </div>
         </div>
 
         <div class="bigBoxContDash">
-            <h2>eventos para o mês</h2>
+            <h2>Tarefas para o mês</h2>
         </div>
 
         <div class="colunaBoxContDash">
-            <h2>Bem vindo! <span class="nameUser"></span></h2>
+            
+            <div class="listaTarefasHoje">
+              <h2>Bem vindo! <span class="nameUser"></span></h2>
+              <h4>tarefas para hoje</h4>
+
+              <ul id="tarefasHoje">
+                
+              </ul>
+            </div>
+            
+            <button class="btnNewTask">Nova Tarefa +</button>
+            
+            <div class="modalNewTask">
+              <div class="contModalNewTask">
+                <button class="btnCloseModal"><i class="fa-solid fa-xmark"></i></button>
+                <form id="formNewTask">
+                  <h3>Criar Tarefa</h3>
+                  <p>Crie sua tarefa para se organizar</p>
+                  <div class="boxCamposInputs">
+                    <div class="campoInputNewTask">
+                      <label for="dateTask">Insira a Data Final</label>
+                      <input type="date" name="dateTask" id="dateTask" aria-label="Insira a data" placeholder="ex:25/07">
+                    
+                      <label for="nameTask">Nome</label>
+                      <input type="text" name="nameTask" id="nameTask" aria-label="Insira nome da tarefa" placeholder="Insira nome da tarefa" maxlength="10">
+                    </div>
+                    
+                    <div class="campoInputNewTask">
+                      <label for="obsTask">Descrição</label>
+                      <textarea type="text" name="obsTask" id="obsTask" aria-label="Escreva a Descrição da sua tarefa (maximo:200)" placeholder="Escreva a Descrição da sua tarefa (maximo:200)" maxlength="200"></textarea>
+                    </div>
+                  </div>
+
+                  
+                  <button type="submit" class="btnModalCreateNewTask">Criar Tarefa</button>
+                </form>
+              </div>
+            </div>
         </div>
       </section>
     </main>
