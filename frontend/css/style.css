@@ -657,12 +657,16 @@ body::-webkit-scrollbar{
         justify-content: space-between;
         width: 100%;
     }
+    .infoLogin{
+        flex: 0;
+    }
     .introInfo{
         display: flex;
         align-items: center;
         width: 100%;
         justify-content: center;
         flex: 1;
+        font-size: .9rem;
     }
     .introInfo h1{
         width: 20ch;
@@ -677,17 +681,18 @@ body::-webkit-scrollbar{
         align-items: center;
         justify-content: center;
         flex: 0;
-        gap: 50px;
-        font-size: .9rem;
+        gap: 20px;
+        font-size: .6rem;
         padding: 10px;
     }
     .indiceTopico{
-        height: 40px;
-        width: 70px;
+        height: 30px;
+        width: 50px;
     }
     .contLogin{
         width: 100%;
         border-radius: 0;
+        flex: 1;
     }
     .formLogin{
         background: none;

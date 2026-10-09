@@ -127,7 +127,7 @@ function renderizarTarefas(){
             <button class="btnRemoveTask btnsTask"><i class="fa-solid fa-xmark"></i></button>
             <button class="btnShowTask btnsTask"><i class="fa-solid fa-magnifying-glass"></i></button>
             <button class="btnReadyTask btnsTask"><i class="fa-solid fa-check"></i></button>
-        <div>
+        </div>
         <span class="linhaTask"></span>
         `
         tarefasHojeLista.appendChild(newTask)
