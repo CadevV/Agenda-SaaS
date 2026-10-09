@@ -663,7 +663,7 @@ body::-webkit-scrollbar{
     .introInfo{
         display: flex;
         align-items: center;
-        width: 100%;
+        min-width: 100%;
         justify-content: center;
         flex: 1;
         font-size: .9rem;
@@ -681,13 +681,14 @@ body::-webkit-scrollbar{
         align-items: center;
         justify-content: center;
         flex: 0;
-        gap: 20px;
-        font-size: .6rem;
+        gap: 10px;
+        font-size: .5rem;
         padding: 10px;
     }
     .indiceTopico{
-        height: 30px;
-        width: 50px;
+        height: 15px;
+        width: 30px;
+        font-size: .5rem;
     }
     .contLogin{
         width: 100%;
@@ -695,7 +696,10 @@ body::-webkit-scrollbar{
         flex: 1;
     }
     .formLogin{
+        min-width: 100%;
+        height: 100vh;
         background: none;
+        backdrop-filter: initial;
     }
 
     /* Dashboard*/
