@@ -1,3 +1,5 @@
+const btnMenuMobile = document.querySelector('.btnMobile')
+const menuMobile = document.querySelector('.infoDash')
 const btnLogout = document.querySelector('.btnLogout')
 const boxDia = document.getElementById('boxDiaHoje')
 const boxTotalTask = document.getElementById('boxTarefasTotais')
@@ -16,6 +18,11 @@ const tasks = document.querySelectorAll('.tasks')
 const tarefas = []
 const tarefasHoje = []
 const tarefasConcluidas = []
+
+function mobileMenu(){
+    menuMobile.classList.toggle('on')
+    btnMenuMobile.classList.toggle('on')
+}
 
 function desLogar(){
     window.location.href = "index.html"
@@ -72,6 +79,86 @@ function concluirTask(){
     boxTasksCompleted.textContent = tarefasConcluidas.length.toString().padStart(2, "0")
 }
 
+async function eventosTasks(event){
+    const eventos = event.target.closest('.eventosTask')
+
+    if(!eventos){
+        return
+    }
+
+    const btnRemove = event.target.closest('.btnRemoveTask')
+    const btnShow = event.target.closest('.btnShowTask')
+
+    if(btnRemove){
+        const tarefaClicada = eventos.closest('.tasks')
+        const id = tarefaClicada.dataset.id
+
+        await excluirTarefaApi(id)
+        await carregarTarefas()
+    }
+
+    if(btnShow){
+        const tarefaClicada = eventos.closest('.tasks')
+        const id = Number(tarefaClicada.dataset.id)
+
+        const tarefa = tarefas.find(element => element.id === id)
+
+        console.log(tarefa)
+    }
+
+    
+}
+function renderizarTarefas(){
+    tarefasHojeLista.innerHTML = ``
+
+    tarefasHoje.length = 0
+    tarefasHoje.push(...tarefas.filter(el => el.hoje === true))
+
+    tarefasHoje.forEach(element =>{   
+        const newTask = document.createElement('li')
+        newTask.classList.add('tasks')
+        newTask.dataset.id = element.id
+
+        newTask.innerHTML = 
+        `
+        <p><span>${element.nome}</span> <span>${element.data}</span> </p>
+                
+        <div class="eventosTask">
+            <button class="btnRemoveTask btnsTask"><i class="fa-solid fa-xmark"></i></button>
+            <button class="btnShowTask btnsTask"><i class="fa-solid fa-magnifying-glass"></i></button>
+            <button class="btnReadyTask btnsTask"><i class="fa-solid fa-check"></i></button>
+        <div>
+        <span class="linhaTask"></span>
+        `
+        tarefasHojeLista.appendChild(newTask)
+    })
+    verificarTarefas()
+}
+
+async function carregarTarefas(){
+    const tarefasSalvas = await buscarTarefasApi()
+
+    const tarefasFormatadas = tarefasSalvas.map(element => {
+        return {
+            id: element.id,
+            nome: element.tarefas,
+            data: element.data,
+            desc: element.obs,
+            hoje: false,
+            concluido: false
+        }
+    })
+
+    tarefas.length = 0
+    tarefas.push(...tarefasFormatadas)
+
+    pegarTotalTarefas()
+    pegarTarefasHoje()
+    renderizarTarefas()
+
+    console.log(tarefas)
+}
+
 async function criarTarefa(){
     let dataTaskDigitada = dateTask.value 
     let nomeTaskDigitada = nameTask.value
@@ -101,37 +188,16 @@ async function criarTarefa(){
         pegarTotalTarefas()
         pegarTarefasHoje()
         concluirTask()
+        renderizarTarefas()
 
         formCreateTask.reset()
         modalCreateNewTask.classList.remove('on')
     }
 
-    if(tarefas.length > 0){
-        tarefasHojeLista.innerHTML = ``
-
-        tarefasHoje.length = 0
-        tarefasHoje.push(...tarefas.filter(el => el.hoje === true))
-
-        tarefasHoje.forEach(element =>{   
-            const newTask = document.createElement('li')
-            newTask.classList.add('tasks')
-
-            newTask.innerHTML = 
-            `
-            <p><span>${element.nome}</span> <span>${element.data}</span> </p>
-                
-            <div>
-                <button class="btnRemoveTask btnsTask"><i class="fa-solid fa-xmark"></i></button>
-                <button class="btnShowTask btnsTask"><i class="fa-solid fa-magnifying-glass"></i></button>
-                <button class="btnReadyTask btnsTask"><i class="fa-solid fa-check"></i></button>
-            <div>
-            <span class="linhaTask"></span>
-            `
-            tarefasHojeLista.appendChild(newTask)
-        })
-        verificarTarefas()
-    }
+    
 }
+
+btnMenuMobile.addEventListener('click', mobileMenu)
 
 btnLogout.addEventListener('click', desLogar)
 
@@ -148,8 +214,11 @@ formCreateTask.addEventListener('submit', (event)=>{
     criarTarefa()
 })
 
+tarefasHojeLista.addEventListener('click', eventosTasks)
+
 pegarData()
 pegarTotalTarefas()
 pegarTarefasHoje()
 concluirTask()
 verificarTarefas()
+carregarTarefas()
