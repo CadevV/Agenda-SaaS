@@ -1,3 +1,5 @@
+const btnMenuMobile = document.querySelector('.btnMobile')
+const menuMobile = document.querySelector('.infoDash')
 const btnLogout = document.querySelector('.btnLogout')
 const boxDia = document.getElementById('boxDiaHoje')
 const boxTotalTask = document.getElementById('boxTarefasTotais')
@@ -16,6 +18,11 @@ const tasks = document.querySelectorAll('.tasks')
 const tarefas = []
 const tarefasHoje = []
 const tarefasConcluidas = []
+
+function mobileMenu(){
+    menuMobile.classList.toggle('on')
+    btnMenuMobile.classList.toggle('on')
+}
 
 function desLogar(){
     window.location.href = "index.html"
@@ -189,6 +196,8 @@ async function criarTarefa(){
 
     
 }
+
+btnMenuMobile.addEventListener('click', mobileMenu)
 
 btnLogout.addEventListener('click', desLogar)
 
